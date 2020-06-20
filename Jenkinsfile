@@ -29,9 +29,8 @@ node {
                 ],
             ]) {
                 stage 'Publish - API'
-                echo "user is ${API_USER}"
-                echo "user is ${API_PASSWORD}"
-
+                sh "make print-vars"
+                
             }
         }
     }
