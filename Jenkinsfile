@@ -30,7 +30,7 @@ node {
             ]) {
                 stage 'Publish - API'
                 sh "make print-vars"
-                sh "make all"
+                sh "make vars"
                 sh ". env.sh"
                 sh "make run"
                 sh "rm env.sh"
