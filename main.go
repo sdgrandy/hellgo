@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 var HELLGO_API_URL string
 
 func main() {
 	//url := os.Getenv("HELLGO_API_URL")
-	url := HELLGO_API_URL
-	fmt.Println("url:", url)
+	port := os.Getenv("PORT")
+	fmt.Println("port: ", port)
 	var locale, greeting string
 	var languages = [4]string{"en", "es", "de", "fr"}
 	locale = languages[1]

@@ -32,8 +32,8 @@ node {
                 //sh "make print-vars"
                 sh "make vars"
                 //sh "eval '${./env.sh}' "
-                sh "make run"
-                sh "rm env.sh"
+                sh "make docker-build"
+                sh "make docker-run"
             }
         }
     }
