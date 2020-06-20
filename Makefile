@@ -1,7 +1,7 @@
 makefile_dir		:= $(abspath $(shell pwd))
 HELLGO_API_USER := $(API_USER)
-#HELLGO_API_URL  := $(API_URL)
-HELLGO_API_URL  := google.com
+HELLGO_API_URL  := $(API_URL)
+#HELLGO_API_URL  := google.com
 HELLGO_API_PORT  := $(API_PORT)
 export
 
@@ -29,7 +29,10 @@ run:
 	./hellgo
 
 docker-build:
-	docker build --no-cache --build-arg PORT=$(HELLGO_API_PORT) --tag build:2.0 .
+	#docker build --no-cache --build-arg PORT=$(HELLGO_API_PORT) \
+	#--tag build:2.0 .
+	@make vars
+	docker build --no-cache --tag build:2.0 .
 
 docker-run:
 	docker run --name bb build:2.0
