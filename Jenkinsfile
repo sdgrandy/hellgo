@@ -16,8 +16,8 @@ node {
 
         stage 'Build'
         //sh "make docker-build"
-        echo "url is ${API_URL}"
-        echo "port is ${API_PORT}"
+        //echo "url is ${API_URL}"
+        //echo "port is ${API_PORT}"
 
         if( ['prod', 'qa', 'dev'].contains("${ENVIRONMENT}".toString()) ) {
             withCredentials([
@@ -29,9 +29,9 @@ node {
                 ],
             ]) {
                 stage 'Publish - API'
-                sh "make print-vars"
+                //sh "make print-vars"
                 sh "make vars"
-                sh ". env.sh"
+                sh "eval $(./env.sh)"
                 sh "make run"
                 sh "rm env.sh"
             }
