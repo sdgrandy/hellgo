@@ -7,7 +7,7 @@ node {
     withEnv([
         "PROJECT_NAME=${projectName}",
         "WORKSPACE=${pwd()}",
-        "ENVIRONMENT=${dev}",
+        "ENVIRONMENT=${env}",
         "URL=${url}",
         "PORT=${port}"
     ]) {
