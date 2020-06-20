@@ -24,12 +24,13 @@ node {
                 [
                     $class: 'UsernamePasswordMultiBinding',
                     credentialsId: "creds_id",
-                    usernameVariable: 'USERNAME',
-                    passwordVariable: 'PASSWORD'
+                    usernameVariable: 'API_USERNAME',
+                    passwordVariable: 'API_PASSWORD'
                 ],
             ]) {
                 stage 'Publish - API'
-                //sh "make docker-build"
+                echo "user is ${API_USER}"
+                echo "user is ${API_PASSWORD}"
 
             }
         }
