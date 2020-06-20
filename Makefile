@@ -2,7 +2,8 @@ makefile_dir		:= $(abspath $(shell pwd))
 HELLGO_API_USER := $(API_USER)
 HELLGO_API_URL  := $(API_URL)
 #HELLGO_API_URL  := google.com
-HELLGO_API_PORT  := $(API_PORT)
+#HELLGO_API_PORT  := $(API_PORT)
+HELLGO_API_PORT := 7777
 export
 
 buildvars := "-X main.HELLGO_API_URL=yahoo.com -X main.HELLGO_API_PORT=7500"
@@ -15,9 +16,9 @@ print-vars:
 vars:
 	touch env.sh
 	chmod +x env.sh
-	@echo export HELLGO_API_URL=$(HELLGO_API_URL) >> env.sh
-	@echo export HELLGO_API_PORT=$(HELLGO_API_PORT) >> env.sh
-	@echo export HELLGO_API_USER=$(HELLGO_API_USER) >> env.sh
+	@echo $(HELLGO_API_URL) >> env.sh
+	@echo $(HELLGO_API_PORT) >> env.sh
+	@echo $(HELLGO_API_USER) >> env.sh
 
 push:
 	git add .
@@ -25,7 +26,7 @@ push:
 	git push origin master
 
 run:
-	go build -ldflags $(buildvars)
+	go build 
 	./hellgo
 
 docker-build:
