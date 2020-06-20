@@ -22,5 +22,5 @@ push:
 	git push origin master
 
 run:
-	go build
+	go build -ldflags "-X main.HELLGO_API_URL=$(HELLGO_API_URL)"
 	./hellgo
