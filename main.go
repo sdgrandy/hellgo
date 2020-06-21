@@ -73,7 +73,7 @@ func replace(s string) string {
 	for _, v := range s {
 		if v != 32 {
 			fmt.Println("rune is:", v)
-			fmt.Println("char is:", string[v])
+			fmt.Println("char is:", string(v))
 			fmt.Println()
 			r = append(r, v)
 		}
