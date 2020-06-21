@@ -15,8 +15,6 @@ node {
         checkout scm
 
         stage 'Build'
-        sh "make vars"
-        sh "make docker-build"
         echo "url is ${API_URL}"
         echo "port is ${API_PORT}"
 
@@ -33,7 +31,9 @@ node {
                 //print 'username.collect { it }=' + API_USERNAME.collect { it }
                 //print 'password.collect { it }=' + API_PASSWORD.collect { it }
                 //sh "API_USERNAME.collect { it } >> "
-                echo "username: ${API_USERNAME}"
+                //echo "username: ${API_USERNAME}"
+                sh "make vars"
+                sh "make docker-build"
                 sh "make docker-up"
                 sh "make print-vars"
             }
