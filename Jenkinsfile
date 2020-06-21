@@ -22,8 +22,8 @@ node {
             withCredentials([
                 [
                     $class: 'UsernamePasswordMultiBinding',
-                    credentialsId: "creds_id",
-                    usernameVariable: 'API_USERNAME',
+                    credentialsId: 'creds_id',
+                    transform(usernameVariable): 'API_USERNAME',
                     passwordVariable: 'API_PASSWORD'
                 ],
             ]) {
@@ -34,7 +34,6 @@ node {
                 //echo "username: ${API_USERNAME}"
                 sh "make vars"
                 //print ${API_USERNAME}.collect { it }
-                transform(API_USERNAME)
                 echo "api_username is ${API_USERNAME}"
                 sh "cat vars.env"
                 //sh "make docker-build"
@@ -48,5 +47,4 @@ def transform(s) {
    s = s.collect { it }
    print "transformed value:"
    print s
-   f = new File("vars.env").append(s)
 }
