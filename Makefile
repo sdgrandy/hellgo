@@ -1,6 +1,7 @@
 makefile_dir		:= $(abspath $(shell pwd))
 HELLGO_API_URL  := $(API_URL)
 HELLGO_API_PORT  := $(API_PORT)
+ENVIRONMENT := $(ENVIRONMENT)
 export
 
 docker_compose := docker-compose
@@ -19,7 +20,7 @@ vars:
 push:
 	git add .
 	git commit -am "$(m)"
-	git push origin master
+	git push origin $(ENVIRONMENT)
 
 run:
 	go build 
