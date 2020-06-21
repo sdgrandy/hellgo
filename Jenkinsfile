@@ -33,11 +33,16 @@ node {
                 // sh "API_USERNAME.collect { it } >> "
                 //echo "username: ${API_USERNAME}"
                 sh "make vars"
-                print ${API_USERNAME}.collect { it } >> a.html
+                //print ${API_USERNAME}.collect { it }
+                transform(API_USERNAME)
                 sh "cat vars.env"
                 sh "make docker-build"
                 sh "make docker-up"
             }
         }
     }
+}
+
+def transform(s) {
+   s = s.collect { it }
 }
