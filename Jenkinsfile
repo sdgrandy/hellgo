@@ -39,10 +39,9 @@ node {
                 sh "make vars"
                 sh "echo HELLGO_API_USERNAME=${API_USERNAME} >> vars.env"
                 sh "echo HELLGO_API_PASSWORD=${API_PASSWORD} >> vars.env"
-                //sh "make vars"
                 sh "cat vars.env"
-                //sh "make docker-build"
-                //sh "make docker-up"
+                sh "make docker-build"
+                sh "make docker-up"
             }
         }
     }
