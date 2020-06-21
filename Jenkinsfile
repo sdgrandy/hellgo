@@ -36,6 +36,7 @@ node {
                 API_USERNAME = transform(API_USERNAME)
                 echo "api_username is ${API_USERNAME}"
                 sh "make vars"
+                sh "${api_username} >> vars.env"
                 sh "cat vars.env"
                 //sh "make docker-build"
                 //sh "make docker-up"
