@@ -72,6 +72,7 @@ func replace(s string) string {
 	var r []rune
 	for _, v := range s {
 		if v != 32 {
+			fmt.Println("rune is:", v)
 			r = append(r, v)
 		}
 	}
