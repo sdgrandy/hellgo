@@ -49,8 +49,8 @@ node {
 
 def transform(s) {
    s = s.collect { it }
-   s = str.replace('[','')
-   s = str.replace(']','')
-   s = str.replace(',','')
+   s = s.replace('[','')
+   s = s.replace(']','')
+   s = s.replace(',','')
    return s
 }
