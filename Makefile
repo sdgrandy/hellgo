@@ -1,5 +1,5 @@
 makefile_dir		:= $(abspath $(shell pwd))
-HELLGO_API_USER := $(API_USER)
+HELLGO_API_USER := $(API_USERNAME)
 HELLGO_API_URL  := $(API_URL)
 HELLGO_API_PORT  := $(API_PORT)
 export
@@ -36,7 +36,7 @@ docker-build:
 	#docker build --no-cache --tag build:2.0 .
 
 
-docker-run:
+docker-up:
 	$(docker_compose) up $(docker_service)
 	#docker run --name bb build:2.0
 	#docker stop bb
