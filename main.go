@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 )
 
 var HELLGO_API_URL string
@@ -60,9 +59,9 @@ func main() {
 }
 
 func replace(s string) string {
-	s = strings.ReplaceAll(s, " ", "")
-	s = strings.ReplaceAll(s, "[", "")
-	s = strings.ReplaceAll(s, "]", "")
-	s = strings.ReplaceAll(s, ",", "")
+	//s = strings.ReplaceAll(s, " ", "")
+	//s = strings.ReplaceAll(s, "[", "")
+	//s = strings.ReplaceAll(s, "]", "")
+	//s = strings.ReplaceAll(s, ",", "")
 	return s
 }
