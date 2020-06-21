@@ -32,10 +32,10 @@ node {
                 //print 'password.collect { it }=' + API_PASSWORD.collect { it }
                 // sh "API_USERNAME.collect { it } >> "
                 //echo "username: ${API_USERNAME}"
-                sh "make vars"
                 //print ${API_USERNAME}.collect { it }
                 API_USERNAME = transform(API_USERNAME)
                 echo "api_username is ${API_USERNAME}"
+                sh "make vars"
                 sh "cat vars.env"
                 //sh "make docker-build"
                 //sh "make docker-up"
@@ -46,7 +46,5 @@ node {
 
 def transform(s) {
    s = s.collect { it }
-   print "transformed value:"
-   print s
    return s
 }
