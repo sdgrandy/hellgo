@@ -20,6 +20,10 @@ func main() {
 
 	user := os.Getenv("HELLGO_API_USER")
 	fmt.Println("user: ", user)
+
+	pw := os.Getenv("HELLGO_API_PASSWORD")
+	fmt.Println("password: ", pw)
+
 	var locale, greeting string
 	var languages = [4]string{"en", "es", "de", "fr"}
 	locale = languages[1]
