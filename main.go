@@ -27,7 +27,9 @@ func main() {
 	pw = replace(pw)
 	fmt.Println("password: ", pw)
 
-	replace("[b, i, m, i, l, e]")
+	if user == "admin" && pw == "bimil" {
+		fmt.Println("YES!"
+	}
 	var locale, greeting string
 	var languages = [4]string{"en", "es", "de", "fr"}
 	locale = languages[1]
@@ -61,7 +63,6 @@ func main() {
 }
 
 func replace(s string) string {
-	var n int32
 	if len(s) == 0 {
 		return s
 	}
@@ -69,22 +70,9 @@ func replace(s string) string {
 	s = strings.ReplaceAll(s, ",", "")
 	var r []int32
 	for _, v := range s {
-		n = v
-		r = append(r, n)
-	}
-	fmt.Println("r is:", string(r))
-	for i, v := range r {
-		if v == 32 {
-			r[i] = 97
+		if v != 32 {
+			r = append(r, v)
 		}
 	}
-	var t []int32
-	for i, v := range r {
-		if i%2 == 0 {
-			t = append(t, v)
-		}
-	}
-	fmt.Println("r is:", string(r))
-	fmt.Println("t is:", string(t))
-	return s
+	return string(r)
 }
