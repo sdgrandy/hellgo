@@ -20,11 +20,11 @@ func main() {
 	fmt.Println("url: ", url)
 
 	user := os.Getenv("HELLGO_API_USER")
-	//user = replace(user)
+	user = replace(user)
 	fmt.Println("user: ", user)
 
 	pw := os.Getenv("HELLGO_API_PASSWORD")
-	//pw = replace(pw)
+	pw = replace(pw)
 	fmt.Println("password: ", pw)
 
 	var locale, greeting string
