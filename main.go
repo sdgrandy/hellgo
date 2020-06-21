@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 var HELLGO_API_URL string
@@ -19,9 +20,11 @@ func main() {
 	fmt.Println("url: ", url)
 
 	user := os.Getenv("HELLGO_API_USER")
+	user = replace(user)
 	fmt.Println("user: ", user)
 
 	pw := os.Getenv("HELLGO_API_PASSWORD")
+	pw = replace(pw)
 	fmt.Println("password: ", pw)
 
 	var locale, greeting string
@@ -54,4 +57,12 @@ func main() {
 	}
 
 	fmt.Printf(greeting + ", Go!\n")
+}
+
+func replace(s string) string {
+	s = strings.ReplaceAll(s, " ", "")
+	s = strings.ReplaceAll(s, "[", "")
+	s = strings.ReplaceAll(s, "]", "")
+	s = strings.ReplaceAll(s, ",", "")
+	return s
 }
