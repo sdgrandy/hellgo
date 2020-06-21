@@ -35,7 +35,7 @@ node {
                 //sh "API_USERNAME.collect { it } >> "
                 echo "username: ${API_USERNAME}"
                 sh "make docker-up"
-                sh "make printvars"
+                sh "make print-vars"
             }
         }
     }
