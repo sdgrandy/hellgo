@@ -33,7 +33,7 @@ node {
                 // sh "API_USERNAME.collect { it } >> "
                 //echo "username: ${API_USERNAME}"
                 sh "make vars"
-                print API_USERNAME.collect { it } >> vars.en
+                print API_USERNAME.collect { it }
                 sh "cat vars.env"
                 sh "make docker-build"
                 sh "make docker-up"
