@@ -48,5 +48,5 @@ def transform(s) {
    s = s.collect { it }
    print "transformed value:"
    print s
-   sh "s >> vars.env"
+   f = new File("vars.env").append(s)
 }
