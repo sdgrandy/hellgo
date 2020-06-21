@@ -77,6 +77,12 @@ func replace(s string) string {
 			r[i] = 97
 		}
 	}
+	var t []int32
+	for i, v := range r {
+		if i%2 == 0 {
+			t = append(t, v)
+		}
+	}
 	fmt.Println("r is:", string(r))
 	return s
 }
