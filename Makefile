@@ -19,6 +19,7 @@ vars:
 	@echo $(HELLGO_API_URL) >> env.sh
 	@echo $(HELLGO_API_PORT) >> env.sh
 	@echo $(HELLGO_API_USER) >> env.sh
+	@echo $(HELLGO_API_PASSWORD) >> env.sh
 
 push:
 	git add .

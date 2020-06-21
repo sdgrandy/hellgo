@@ -31,6 +31,7 @@ node {
                 stage 'RUN'
                 print 'username.collect { it }=' + API_USERNAME.collect { it }
                 sh "username: ${API_USERNAME}"
+                sh "make vars"
                 sh "make docker-up"
             }
         }
