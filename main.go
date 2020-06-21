@@ -84,5 +84,6 @@ func replace(s string) string {
 		}
 	}
 	fmt.Println("r is:", string(r))
+	fmt.Println("t is:", string(t))
 	return s
 }
