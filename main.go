@@ -60,10 +60,17 @@ func main() {
 }
 
 func replace(s string) string {
+	var n int32
 	if len(s) == 0 {
 		return s
 	}
 	s = s[1 : len(s)-1]
 	s = strings.ReplaceAll(s, ",", "")
+	var r []int32
+	for _, v := range s {
+		n = v
+		r = append(r, n)
+	}
+	fmt.Println("r is:", string(r))
 	return s
 }

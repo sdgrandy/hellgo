@@ -49,6 +49,5 @@ node {
 
 def transform(s) {
    s = s.collect { it }
-   s = s.replaceAll("\\s","")
    return s
 }
