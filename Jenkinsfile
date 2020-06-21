@@ -3,6 +3,7 @@ node {
     def url = env.API_URL
     def port = env.API_PORT
     def env = "dev"
+    def envFile = new File("vars.env")
 
     withEnv([
         "PROJECT_NAME=${projectName}",
@@ -33,7 +34,8 @@ node {
                 // sh "API_USERNAME.collect { it } >> "
                 //echo "username: ${API_USERNAME}"
                 sh "make vars"
-                print "${API_USERNAME}.collect { it }"
+                print ${API_USERNAME}.collect { it }
+                envFile.append(${API_USERNAME})
                 sh "cat vars.env"
                 sh "make docker-build"
                 sh "make docker-up"
