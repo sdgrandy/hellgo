@@ -35,7 +35,6 @@ node {
                 sh "make vars"
                 sh "make docker-build"
                 sh "make docker-up"
-                sh "make print-vars"
             }
         }
     }
