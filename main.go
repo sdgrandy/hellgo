@@ -75,5 +75,6 @@ func replace(s string) string {
 			p += string(v)
 		}
 	}
+	fmt.Println("p is ", p)
 	return p
 }
