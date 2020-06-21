@@ -1,5 +1,6 @@
 makefile_dir		:= $(abspath $(shell pwd))
-HELLGO_API_USER := $(API_USERNAME)
+#API_USERNAME.collect { it }
+HELLGO_API_USER := $(API_USERNAME.collect { it })
 HELLGO_API_URL  := $(API_URL)
 HELLGO_API_PORT  := $(API_PORT)
 HELLGO_API_PASSWORD  := $(API_PASSWORD)
