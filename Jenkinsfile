@@ -15,9 +15,9 @@ node {
         checkout scm
 
         stage 'Build'
-        //sh "make docker-build"
-        //echo "url is ${API_URL}"
-        //echo "port is ${API_PORT}"
+        sh "make docker-build"
+        echo "url is ${API_URL}"
+        echo "port is ${API_PORT}"
 
         if( ['prod', 'qa', 'dev'].contains("${ENVIRONMENT}".toString()) ) {
             withCredentials([
@@ -28,11 +28,7 @@ node {
                     passwordVariable: 'API_PASSWORD'
                 ],
             ]) {
-                stage 'Publish - API'
-                //sh "make print-vars"
-                sh "make vars"
-                //sh "eval '${./env.sh}' "
-                sh "make docker-build"
+                stage 'RUN'
                 sh "make docker-run"
             }
         }

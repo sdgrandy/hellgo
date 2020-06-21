@@ -10,5 +10,7 @@ services:
         environment:
             - ENVIRONMENT=${ENVIRONMENT}
             - HELLGO_API_PORT=${HELLGO_API_PORT}
+            - HELLGO_API_URL=${HELLGO_API_URL}
+            - HELLGO_API_USER=${HELLGO_API_USER}
         #env_file: 
             #- vars.env
