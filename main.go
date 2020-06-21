@@ -35,7 +35,7 @@ func main() {
 	} else if env == "qa" && user == "admin2" && pw == "bimil2" {
 		fmt.Println("YES it is QA")
 	} else if env == "dev" && user == "admin3" && pw == "bimil3" {
-		fmt.Println("YES it's DEV")
+		fmt.Println("YES it is DEV")
 	} else {
 		fmt.Println("WRONG USERNAME AND/OR PASSWORD")
 	}
