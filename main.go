@@ -27,8 +27,10 @@ func main() {
 	pw = replace(pw)
 	fmt.Println("password: ", pw)
 
-	if user == "admin" && pw == "bimil" {
+	if user == "admin" {
 		fmt.Println("YES!")
+	} else {
+		fmt.Println("no")
 	}
 	var locale, greeting string
 	var languages = [4]string{"en", "es", "de", "fr"}
