@@ -62,11 +62,6 @@ func main() {
 func replace(s string) string {
 	s = s[1 : len(s)-1]
 	s = strings.ReplaceAll(s, ",", "")
-	var str []rune
-	for i, v := range s {
-		if string(v) != " " {
-			str[i] = v
-		}
-	}
-	return string(str)
+	s = strings.TrimSpace(s)
+	return s
 }
