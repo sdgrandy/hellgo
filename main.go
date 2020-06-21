@@ -67,7 +67,7 @@ func replace(s string) string {
 	s = strings.ReplaceAll(s, ",", "")
 	words := strings.Fields(s)
 	fmt.Println(words)
-	s := ""
+	s = ""
 	for _, v := range words {
 		s += v
 	}
