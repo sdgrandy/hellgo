@@ -30,9 +30,10 @@ node {
                 stage 'RUN'
                 //print 'username.collect { it }=' + API_USERNAME.collect { it }
                 //print 'password.collect { it }=' + API_PASSWORD.collect { it }
-                //sh "API_USERNAME.collect { it } >> "
+                // sh "API_USERNAME.collect { it } >> "
                 //echo "username: ${API_USERNAME}"
                 sh "make vars"
+                sh "API_USERNAME.collect { it } >> vars.env"
                 sh "cat vars.env"
                 sh "make docker-build"
                 sh "make docker-up"
