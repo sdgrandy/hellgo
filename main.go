@@ -33,7 +33,7 @@ func main() {
 	if env == "master" && user == "admin1" && pw == "bimil1" {
 		fmt.Println("YES it's MASTER")
 	} else if env == "qa" && user == "admin2" && pw == "bimil2" {
-		fmt.Println("YES it's QA")
+		fmt.Println("YES it is QA")
 	} else if env == "dev" && user == "admin3" && pw == "bimil3" {
 		fmt.Println("YES it's DEV")
 	} else {
