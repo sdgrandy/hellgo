@@ -2,22 +2,22 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    if(env.BRANCH_NAME=="master"){
+    if(env.NODE_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
     }
-    else if(env.BRANCH_NAME=="qa"){
+    else if(env.NODE_NAME=="qa"){
         url = env.API_URL_QA
         port = env.API_PORT_QA
     }
-    else if(env.BRANCH_NAME=="dev"){
+    else if(env.NODE_NAME=="dev"){
         url = env.API_URL_DEV
         port = env.API_PORT_DEV
     }
     withEnv([
         "PROJECT_NAME=${projectName}",
         "WORKSPACE=${pwd()}",
-        "ENVIRONMENT=${env.BRANCH_NAME}",
+        "ENVIRONMENT=${env.NODE_NAME}",
         "API_URL=${url}",
         "API_PORT=${port}"
     ]) {
