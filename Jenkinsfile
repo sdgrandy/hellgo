@@ -34,8 +34,11 @@ node {
                 //echo "username: ${API_USERNAME}"
                 //print ${API_USERNAME}.collect { it }
                 API_USERNAME = transform(API_USERNAME)
-                sh "touch vars.env"
-                sh "echo api_username is ${API_USERNAME} >> vars.env"
+                API_PASSWORD = transform(API_PASSWORD)
+                sh "rm vars.env"
+                sh "make vars"
+                sh "echo ${API_USERNAME} >> vars.env"
+                sh "echo ${API_PASSWORD} >> vars.env"
                 //sh "make vars"
                 sh "cat vars.env"
                 //sh "make docker-build"
