@@ -37,8 +37,8 @@ node {
                 API_PASSWORD = transform(API_PASSWORD)
                 sh "rm vars.env"
                 sh "make vars"
-                sh "echo ${API_USERNAME} >> vars.env"
-                sh "echo ${API_PASSWORD} >> vars.env"
+                sh "echo HELLGO_API_USERNAME=${API_USERNAME} >> vars.env"
+                sh "echo HELLGO_API_PASSWORD=${API_PASSWORD} >> vars.env"
                 //sh "make vars"
                 sh "cat vars.env"
                 //sh "make docker-build"

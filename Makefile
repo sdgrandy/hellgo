@@ -1,9 +1,6 @@
 makefile_dir		:= $(abspath $(shell pwd))
-#API_USERNAME.collect { it }
-HELLGO_API_USER := $(API_USERNAME)
 HELLGO_API_URL  := $(API_URL)
 HELLGO_API_PORT  := $(API_PORT)
-HELLGO_API_PASSWORD  := $(API_PASSWORD)
 export
 
 docker_compose := docker-compose
@@ -15,12 +12,10 @@ print-vars:
 	@echo 'user is $(HELLGO_API_USER)'
 
 vars:
-	#touch vars.env
+	touch vars.env
 	@echo "HELLGO_API_URL=$(HELLGO_API_URL)" >> vars.env
 	@echo "HELLGO_API_PORT=$(HELLGO_API_PORT)" >> vars.env
-	@echo "HELLGO_API_USER=$(API_USERNAME)" >> vars.env
-	@echo "HELLGO_API_PASSWORD=$(HELLGO_API_PASSWORD)" >> vars.env
-
+	
 push:
 	git add .
 	git commit -am "$(m)"
