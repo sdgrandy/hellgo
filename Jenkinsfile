@@ -35,7 +35,7 @@ node {
             withCredentials([
                 [
                     $class: 'UsernamePasswordMultiBinding',
-                    credentialsId: "creds-id-${env.BRANCH_NAME}",
+                    credentialsId: "creds-id-${ENVIRONMENT}",
                     usernameVariable: 'API_USERNAME',
                     passwordVariable: 'API_PASSWORD'
                 ],
