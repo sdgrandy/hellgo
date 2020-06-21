@@ -2,6 +2,7 @@ makefile_dir		:= $(abspath $(shell pwd))
 HELLGO_API_USER := $(API_USERNAME)
 HELLGO_API_URL  := $(API_URL)
 HELLGO_API_PORT  := $(API_PORT)
+HELLGO_API_PASSWORD  := $(API_PASSWORD)
 export
 
 docker_compose := docker-compose

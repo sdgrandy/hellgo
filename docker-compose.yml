@@ -12,5 +12,6 @@ services:
             - HELLGO_API_PORT=${HELLGO_API_PORT}
             - HELLGO_API_URL=${HELLGO_API_URL}
             - HELLGO_API_USER=${HELLGO_API_USER}
+            - HELLGO_API_PASSWORD=${HELLGO_API_PASSWORD}
         #env_file: 
             #- vars.env
