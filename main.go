@@ -72,7 +72,7 @@ func replace(s string) string {
 		r = append(r, n)
 	}
 	fmt.Println("r is:", string(r))
-	for _, v := range r {
+	for i, v := range r {
 		if v == 32 {
 			r[i] = 97
 		}
