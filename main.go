@@ -66,15 +66,5 @@ func replace(s string) string {
 	s = s[1 : len(s)-1]
 	s = strings.ReplaceAll(s, ",", "")
 	s = strings.TrimSpace(s)
-	var p string
-	for i, v := range s {
-		if i%2 == 0 {
-			fmt.Println("rune is:", v)
-			//fmt.Println("char is:", string(v))
-			fmt.Println()
-			p += string(v)
-		}
-	}
-	fmt.Println("p is ", p)
-	return p
+	return s
 }
