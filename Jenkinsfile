@@ -29,11 +29,9 @@ node {
         echo "port is ${API_PORT}"
 
         stage 'Build'
-        echo "environment is ${ENVIRONMNENT}"
-        echo "url is ${API_URL}"
-        echo "port is ${API_PORT}"
+        
 
-        if( ['prod', 'qa', 'dev'].contains("${ENVIRONMENT}".toString()) ) {
+        if( ['master', 'qa', 'dev'].contains("${ENVIRONMENT}".toString()) ) {
             withCredentials([
                 [
                     $class: 'UsernamePasswordMultiBinding',
