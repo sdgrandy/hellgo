@@ -65,6 +65,11 @@ func replace(s string) string {
 	}
 	s = s[1 : len(s)-1]
 	s = strings.ReplaceAll(s, ",", "")
-	s = strings.TrimSpace(s)
+	words := strings.Fields(s)
+	fmt.Println(words)
+	s := ""
+	for _, v := range words {
+		s += v
+	}
 	return s
 }
