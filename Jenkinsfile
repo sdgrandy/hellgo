@@ -46,8 +46,8 @@ node {
                 // sh "API_USERNAME.collect { it } >> "
                 //echo "username: ${API_USERNAME}"
                 //print ${API_USERNAME}.collect { it }
-                API_USERNAME = transform(API_USER)
-                API_PASSWORD = transform(API_PASSWORD)
+                // API_USERNAME = transform(API_USER)
+                // API_PASSWORD = transform(API_PASSWORD)
                 // sh "rm vars.env"
                 // sh "make vars"
                 // sh "echo HELLGO_API_USER=${API_USER} >> vars.env"
