@@ -13,6 +13,9 @@ func main() {
 	// file, _ := ioutil.ReadFile("vars.sh")
 	// s := string(file)
 	// fmt.Println("file contents:", s)
+	env := os.Getenv("ENVIRONMENT")
+	fmt.Println("environment: ", env)
+
 	port := os.Getenv("HELLGO_API_PORT")
 	fmt.Println("port: ", port)
 
@@ -27,10 +30,14 @@ func main() {
 	pw = replace(pw)
 	fmt.Println("password: ", pw)
 
-	if user == "admin" && pw == "bimil" {
-		fmt.Println("YES!")
+	if env == "master" && user == "admin1" && pw == "bimil1" {
+		fmt.Println("YES it's MASTER")
+	} else if env == "qa" && user == "admin2" && pw == "bimil2" {
+		fmt.Println("YES it's QA")
+	} else if env == "dev" && user == "admin3" && pw == "bimil3" {
+		fmt.Println("YES it's DEV")
 	} else {
-		fmt.Println("no")
+		fmt.Println("WRONG USERNAME AND/OR PASSWORD")
 	}
 	var locale, greeting string
 	var languages = [4]string{"en", "es", "de", "fr"}
