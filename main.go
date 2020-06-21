@@ -27,7 +27,7 @@ func main() {
 	pw = replace(pw)
 	fmt.Println("password: ", pw)
 
-	if user == "admin" {
+	if user == "admin" && pw == "bimil" {
 		fmt.Println("YES!")
 	} else {
 		fmt.Println("no")
