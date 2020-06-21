@@ -28,7 +28,7 @@ func main() {
 	fmt.Println("password: ", pw)
 
 	if user == "admin" && pw == "bimil" {
-		fmt.Println("YES!"
+		fmt.Println("YES!")
 	}
 	var locale, greeting string
 	var languages = [4]string{"en", "es", "de", "fr"}
