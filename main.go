@@ -27,7 +27,7 @@ func main() {
 	pw = replace(pw)
 	fmt.Println("password: ", pw)
 
-	replace("[b, i, m, i, l]")
+	replace("[b, i, m, i, l, e]")
 	var locale, greeting string
 	var languages = [4]string{"en", "es", "de", "fr"}
 	locale = languages[1]
