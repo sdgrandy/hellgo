@@ -5,15 +5,15 @@ node {
     def env = env.BRANCH_NAME
     if(env=="master"){
         url = env.API_URL_MASTER
-        port = API_PORT_MASTER
+        port = env.API_PORT_MASTER
     }
     else if(env=="qa"){
         url = env.API_URL_QA
-        port = API_PORT_QA
+        port = env.API_PORT_QA
     }
     else if(env=="dev"){
         url = env.API_URL_DEV
-        port = API_PORT_DEV
+        port = env.API_PORT_DEV
     }
     withEnv([
         "PROJECT_NAME=${projectName}",
@@ -26,6 +26,7 @@ node {
         checkout scm
 
         stage 'Build'
+        echo "environment is ${ENVIRONMNENT}"
         echo "url is ${API_URL}"
         echo "port is ${API_PORT}"
 
