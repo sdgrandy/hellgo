@@ -24,7 +24,7 @@ node {
         stage 'Checkout'
         checkout scm
         sh 'printenv'
-        echo "environment is ${env.BRANCH_NAME}"
+        echo "environment is ${ENVIRONMENT}"
         echo "url is ${API_URL}"
         echo "port is ${API_PORT}"
 
