@@ -23,7 +23,7 @@ node {
     ]) {
         stage 'Checkout'
         checkout scm
-        echo "environment is ${ENVIRONMNENT}"
+        echo "environment is ${env.BRANCH_NAME}"
         echo "url is ${API_URL}"
         echo "port is ${API_PORT}"
 
