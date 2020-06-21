@@ -36,7 +36,7 @@ node {
                 [
                     $class: 'UsernamePasswordMultiBinding',
                     credentialsId: "creds-id-${ENVIRONMENT}",
-                    usernameVariable: 'API_USERNAME',
+                    usernameVariable: 'API_USER',
                     passwordVariable: 'API_PASSWORD'
                 ],
             ]) {
@@ -46,13 +46,13 @@ node {
                 // sh "API_USERNAME.collect { it } >> "
                 //echo "username: ${API_USERNAME}"
                 //print ${API_USERNAME}.collect { it }
-                API_USERNAME = transform(API_USERNAME)
+                API_USERNAME = transform(API_USER)
                 API_PASSWORD = transform(API_PASSWORD)
-                sh "rm vars.env"
-                sh "make vars"
-                sh "echo HELLGO_API_USER=${API_USERNAME} >> vars.env"
-                sh "echo HELLGO_API_PASSWORD=${API_PASSWORD} >> vars.env"
-                sh "cat vars.env"
+                // sh "rm vars.env"
+                // sh "make vars"
+                // sh "echo HELLGO_API_USER=${API_USER} >> vars.env"
+                // sh "echo HELLGO_API_PASSWORD=${API_PASSWORD} >> vars.env"
+                // sh "cat vars.env"
                 sh "make docker-build"
                 sh "make docker-up"
             }

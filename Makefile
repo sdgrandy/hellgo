@@ -1,6 +1,8 @@
 makefile_dir		:= $(abspath $(shell pwd))
 HELLGO_API_URL  := $(API_URL)
 HELLGO_API_PORT  := $(API_PORT)
+HELLGO_API_USER  := $(API_USER)
+HELLGO_API_PORT  := $(API_PORT)
 ENVIRONMENT := $(ENVIRONMENT)
 export
 
@@ -14,8 +16,8 @@ print-vars:
 
 vars:
 	touch vars.env
-	@echo "HELLGO_API_URL=$(HELLGO_API_URL)" >> vars.env
-	@echo "HELLGO_API_PORT=$(HELLGO_API_PORT)" >> vars.env
+	#@echo "HELLGO_API_URL=$(HELLGO_API_URL)" >> vars.env
+	#@echo "HELLGO_API_PORT=$(HELLGO_API_PORT)" >> vars.env
 	
 push:
 	git add .
