@@ -35,7 +35,7 @@ node {
                 sh "make vars"
                 //print ${API_USERNAME}.collect { it }
                 transform(API_USERNAME)
-                print "api username:" + ${API_USERNAME}
+                echo "api_username is ${API_USERNAME}"
                 sh "cat vars.env"
                 sh "make docker-build"
                 sh "make docker-up"
