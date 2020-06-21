@@ -2,7 +2,7 @@ makefile_dir		:= $(abspath $(shell pwd))
 HELLGO_API_URL  := $(API_URL)
 HELLGO_API_PORT  := $(API_PORT)
 HELLGO_API_USER  := $(API_USER)
-HELLGO_API_PORT  := $(API_PORT)
+HELLGO_API_PASSWORD  := $(HELLGO_API_PASSWORD)
 ENVIRONMENT := $(ENVIRONMENT)
 export
 
