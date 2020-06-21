@@ -1,0 +1,14 @@
+version: '2'
+services:
+    hellgo:
+        build:
+            context: .
+            args:
+                - ENVIRONMENT=${ENVIRONMENT}
+        ports:
+            - 10020:10020
+        environment:
+            - ENVIRONMENT=${ENVIRONMENT}
+            - HELLGO_API_PORT=${HELLGO_API_PORT}
+        #env_file: 
+            #- vars.env

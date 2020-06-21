@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 )
 
@@ -10,10 +9,10 @@ var HELLGO_API_URL string
 
 func main() {
 	//url := os.Getenv("HELLGO_API_URL")
-	file, _ := ioutil.ReadFile("env.sh")
-	s := string(file)
-	fmt.Println("file contents:", s)
-	port := os.Getenv("PORT")
+	//file, _ := ioutil.ReadFile("env.sh")
+	//s := string(file)
+	//fmt.Println("file contents:", s)
+	port := os.Getenv("HELLGO_API_PORT")
 	fmt.Println("port: ", port)
 	var locale, greeting string
 	var languages = [4]string{"en", "es", "de", "fr"}

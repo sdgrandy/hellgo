@@ -1,12 +1,11 @@
 makefile_dir		:= $(abspath $(shell pwd))
 HELLGO_API_USER := $(API_USER)
 HELLGO_API_URL  := $(API_URL)
-#HELLGO_API_URL  := google.com
-#HELLGO_API_PORT  := $(API_PORT)
-HELLGO_API_PORT := 7777
+HELLGO_API_PORT  := $(API_PORT)
 export
 
-buildvars := "-X main.HELLGO_API_URL=yahoo.com -X main.HELLGO_API_PORT=7500"
+docker_compose := docker-compose
+docker_service := hellgo
 
 print-vars:
 	@echo 'url is $(HELLGO_API_URL)'
@@ -30,12 +29,15 @@ run:
 	./hellgo
 
 docker-build:
+	$(docker_compose) build $(docker_service)
 	#docker build --no-cache --build-arg PORT=$(HELLGO_API_PORT) \
 	#--tag build:2.0 .
-	@make vars
-	docker build --no-cache --tag build:2.0 .
+	#@make vars
+	#docker build --no-cache --tag build:2.0 .
+
 
 docker-run:
-	docker run --name bb build:2.0
-	docker stop bb
-	docker rm --force bb
+	$(docker_compose) up $(docker_service)
+	#docker run --name bb build:2.0
+	#docker stop bb
+	#docker rm --force bb
