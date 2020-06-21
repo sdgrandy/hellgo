@@ -29,7 +29,7 @@ node {
                 ],
             ]) {
                 stage 'RUN'
-                sh "make docker-run"
+                sh "make docker-up"
             }
         }
     }
