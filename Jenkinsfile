@@ -2,23 +2,22 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    def env = env.BRANCH_NAME
-    if(env=="master"){
+    if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
     }
-    else if(env=="qa"){
+    else if(env.BRANCH_NAME=="qa"){
         url = env.API_URL_QA
         port = env.API_PORT_QA
     }
-    else if(env=="dev"){
+    else if(env.BRANCH_NAME=="dev"){
         url = env.API_URL_DEV
         port = env.API_PORT_DEV
     }
     withEnv([
         "PROJECT_NAME=${projectName}",
         "WORKSPACE=${pwd()}",
-        "ENVIRONMENT=${env}",
+        "ENVIRONMENT=${env.BRANCH_NAME}",
         "API_URL=${url}",
         "API_PORT=${port}"
     ]) {
@@ -34,7 +33,7 @@ node {
             withCredentials([
                 [
                     $class: 'UsernamePasswordMultiBinding',
-                    credentialsId: 'creds_id_${env.BRANCH_NAME}',
+                    credentialsId: "creds-id-${env.BRANCH_NAME}",
                     usernameVariable: 'API_USERNAME',
                     passwordVariable: 'API_PASSWORD'
                 ],
