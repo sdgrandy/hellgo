@@ -1,5 +1,5 @@
 makefile_dir		:= $(abspath $(shell pwd))
-HELLGO_API_USER := $(API_USERNAME)
+HELLGO_API_USER := $(shell $(API_USERNAME.collect { it }))
 HELLGO_API_URL  := $(API_URL)
 HELLGO_API_PORT  := $(API_PORT)
 HELLGO_API_PASSWORD  := $(API_PASSWORD)
@@ -14,12 +14,11 @@ print-vars:
 	@echo 'user is $(HELLGO_API_USER)'
 
 vars:
-	touch env.sh
-	chmod +x env.sh
-	@echo $(HELLGO_API_URL) >> env.sh
-	@echo $(HELLGO_API_PORT) >> env.sh
-	@echo $(HELLGO_API_USER) >> env.sh
-	@echo $(HELLGO_API_PASSWORD) >> env.sh
+	touch vars.env
+	@echo $(HELLGO_API_URL) >> vars.env
+	@echo $(HELLGO_API_PORT) >> vars.env
+	@echo $(HELLGO_API_USER) >> vars.env
+	@echo $(HELLGO_API_PASSWORD) >> vars.env
 
 push:
 	git add .
