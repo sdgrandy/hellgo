@@ -14,6 +14,12 @@ func main() {
 	//fmt.Println("file contents:", s)
 	port := os.Getenv("HELLGO_API_PORT")
 	fmt.Println("port: ", port)
+
+	url := os.Getenv("HELLGO_API_URL")
+	fmt.Println("url: ", url)
+
+	user := os.Getenv("HELLGO_API_USER")
+	fmt.Println("user: ", user)
 	var locale, greeting string
 	var languages = [4]string{"en", "es", "de", "fr"}
 	locale = languages[1]
