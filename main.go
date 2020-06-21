@@ -26,6 +26,9 @@ func main() {
 	pw := os.Getenv("HELLGO_API_PASSWORD")
 	pw = replace(pw)
 	fmt.Println("password: ", pw)
+	admin := "[ a, d, m, i, n ]"
+	admin = replace(admin)
+	fmt.Println("admin:", admin)
 
 	var locale, greeting string
 	var languages = [4]string{"en", "es", "de", "fr"}
@@ -60,8 +63,15 @@ func main() {
 }
 
 func replace(s string) string {
-	s = s[1 : len(s)-1]
+	s = s[1 : len(s)-2]
 	s = strings.ReplaceAll(s, ",", "")
 	s = strings.TrimSpace(s)
+	var r []rune
+	for _, v := range s {
+		if v != 32 {
+			r = append(r, v)
+		}
+	}
+	s = string(r)
 	return s
 }
