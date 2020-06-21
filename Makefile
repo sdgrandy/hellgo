@@ -13,7 +13,7 @@ print-vars:
 	@echo 'url is $(HELLGO_API_URL)'
 	@echo 'port is $(HELLGO_API_PORT)'
 	@echo 'user is $(HELLGO_API_USER)'
-	@echo 'user is $(HELLGO_API_PASSWORD)'
+	@echo 'password is $(HELLGO_API_PASSWORD)'
 
 vars:
 	touch vars.env
