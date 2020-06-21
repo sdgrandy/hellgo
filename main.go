@@ -65,9 +65,5 @@ func replace(s string) string {
 	}
 	s = s[1 : len(s)-1]
 	s = strings.ReplaceAll(s, ",", "")
-	words := strings.Fields(s)
-	fmt.Println(words)
-	s = ""
-	s = strings.Join(words, "")
 	return s
 }
