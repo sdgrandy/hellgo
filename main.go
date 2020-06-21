@@ -60,9 +60,7 @@ func main() {
 }
 
 func replace(s string) string {
-	s = strings.TrimSpace(s)
-	s = strings.ReplaceAll(s, "[", "")
-	s = strings.ReplaceAll(s, "]", "")
+	s = s[1 : len(s)-1]
 	s = strings.ReplaceAll(s, ",", "")
 	return s
 }
