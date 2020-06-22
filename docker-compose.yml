@@ -5,6 +5,7 @@ services:
             context: .
             args:
                 - ENVIRONMENT=${ENVIRONMENT}
+                - HELLGO_API_PORT=${HELLGO_API_PORT}
         ports:
             - 10020:10020
         environment:
