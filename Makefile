@@ -6,7 +6,8 @@ HELLGO_API_PASSWORD  := $(API_PASSWORD)
 ENVIRONMENT := $(ENVIRONMENT)
 export
 
-docker_compose := docker-compose
+#docker_compose := docker-compose
+docker_compose	:= ENVIRONMENT=$(ENVIRONMENT) docker-compose
 docker_service := hellgo
 
 print-vars:
