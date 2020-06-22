@@ -86,7 +86,8 @@ func setVars(f string) error {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		os.Setenv(vars[i], line)
+		fmt.Println("line:", line)
+		os.Setenv(vars[i], string(line))
 	}
 	return scanner.Err()
 }
