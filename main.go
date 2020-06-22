@@ -87,7 +87,8 @@ func setVars(f string) error {
 	for scanner.Scan() {
 		line := scanner.Text()
 		fmt.Println("line:", line)
-		os.Setenv(vars[i], string(line))
+		os.Setenv(vars[i], line)
+		i++
 	}
 	return scanner.Err()
 }
