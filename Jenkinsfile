@@ -57,6 +57,7 @@ node {
                 sh "make env-vars"
                 sh "make docker-build"
                 sh "make docker-up"
+                sh "rm vars.env"
             }
         }
     }
