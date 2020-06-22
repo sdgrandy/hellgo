@@ -1,0 +1,2 @@
+- An environmental variable must be a build arg in the docker-compose.yml file in order for it to be echoed in the Dockerfile.
+- A variable included under "environment:" or "env_file" will be accessible to the container. It doesn't matter if it's build arg or included in the Dockerfile. 

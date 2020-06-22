@@ -10,7 +10,7 @@ var HELLGO_API_URL string
 
 func main() {
 	//url := os.Getenv("HELLGO_API_URL")
-	// file, _ := ioutil.ReadFile("vars.sh")
+	// file, _ := ioutil.ReadFile("vars.env")
 	// s := string(file)
 	// fmt.Println("file contents:", s)
 	env := os.Getenv("ENVIRONMENT")
