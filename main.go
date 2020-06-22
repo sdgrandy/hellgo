@@ -1,33 +1,37 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io/ioutil"
 	"os"
-	"strings"
 )
 
 var HELLGO_API_URL string
 
 func main() {
-	//url := os.Getenv("HELLGO_API_URL")
-	// file, _ := ioutil.ReadFile("vars.env")
-	// s := string(file)
-	// fmt.Println("file contents:", s)
+	file, _ := ioutil.ReadFile("vars.env")
+	s := string(file)
+	fmt.Println("file contents:", s)
+
+	if fileExists("vars.env") {
+		setVars("vars.env")
+	} else {
+		fmt.Println("file does not exist")
+	}
 	env := os.Getenv("ENVIRONMENT")
 	fmt.Println("environment: ", env)
-
-	port := os.Getenv("HELLGO_API_PORT")
-	fmt.Println("port: ", port)
 
 	url := os.Getenv("HELLGO_API_URL")
 	fmt.Println("url: ", url)
 
+	port := os.Getenv("HELLGO_API_PORT")
+	fmt.Println("port: ", port)
+
 	user := os.Getenv("HELLGO_API_USER")
-	//user = replace(user)
 	fmt.Println("user: ", user)
 
 	pw := os.Getenv("HELLGO_API_PASSWORD")
-	//pw = replace(pw)
 	fmt.Println("password: ", pw)
 
 	if env == "master" && user == "admin1" && pw == "bimil1" {
@@ -71,17 +75,26 @@ func main() {
 	fmt.Printf(greeting + ", Go!\n")
 }
 
-func replace(s string) string {
-	if len(s) == 0 {
-		return s
+func setVars(f string) error {
+	i := 0
+	vars := []string{"HELLGO_API_URL", "HELLGO_API_PORT", "HELLGO_API_USER", "HELLGO_API_PASSWORD"}
+	file, err := os.Open(f)
+	if err != nil {
+		return err
 	}
-	s = s[1 : len(s)-1]
-	s = strings.ReplaceAll(s, ",", "")
-	var r []int32
-	for _, v := range s {
-		if v != 32 {
-			r = append(r, v)
-		}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		os.Setenv(vars[i], line)
 	}
-	return string(r)
+	return scanner.Err()
+}
+
+func fileExists(file string) bool {
+	info, err := os.Stat(file)
+	if os.IsNotExist(err) {
+		return false
+	}
+	return !info.IsDir()
 }

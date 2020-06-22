@@ -16,10 +16,12 @@ print-vars:
 	@echo 'user is $(HELLGO_API_USER)'
 	@echo 'password is $(HELLGO_API_PASSWORD)'
 
-vars:
+env-vars:
 	touch vars.env
-	#@echo "HELLGO_API_URL=$(HELLGO_API_URL)" >> vars.env
-	#@echo "HELLGO_API_PORT=$(HELLGO_API_PORT)" >> vars.env
+	@echo "HELLGO_API_URL=$(HELLGO_API_URL)" >> vars.env
+	@echo "HELLGO_API_PORT=$(HELLGO_API_PORT)" >> vars.env
+	@echo "HELLGO_API_USER=$(HELLGO_API_USER)" >> vars.env
+	@echo "HELLGO_API_PASSWORD=$(HELLGO_API_PASSWORD)" >> vars.env
 	
 push:
 	git add .
