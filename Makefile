@@ -31,7 +31,7 @@ run:
 	./hellgo
 
 docker-build:
-	$(docker_compose) build $(docker_service)
+	$(docker_compose) build --no-cache $(docker_service)
 	#docker build --no-cache --build-arg PORT=$(HELLGO_API_PORT) \
 	#--tag build:2.0 .
 	#@make vars
