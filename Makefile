@@ -7,7 +7,7 @@ ENVIRONMENT := $(ENVIRONMENT)
 export
 
 #docker_compose := docker-compose
-docker_compose	:= ENVIRONMENT=$(ENVIRONMENT) HELLGO_API_PORT  := $(API_PORT) docker-compose
+docker_compose	:= ENVIRONMENT=$(ENVIRONMENT) HELLGO_API_PORT=$(HELLGO_API_PORT) docker-compose
 docker_service := hellgo
 
 print-vars:
