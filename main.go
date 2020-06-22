@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 )
 
 var HELLGO_API_URL string
@@ -88,6 +89,8 @@ func setVars(f string) error {
 		line := scanner.Text()
 		os.Setenv(vars[i], line)
 	}
+	cmd := exec.Command("rm", "env.vars")
+	cmd.Run()
 	return scanner.Err()
 }
 
