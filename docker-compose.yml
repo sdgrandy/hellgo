@@ -10,7 +10,7 @@ services:
             - 10020:10020
         environment:
             - ENVIRONMENT=${ENVIRONMENT}
-            - HELLGO_API_PORT=${HELLGO_API_PORT}
+            #- HELLGO_API_PORT=${HELLGO_API_PORT}
             - HELLGO_API_URL=${HELLGO_API_URL}
             - HELLGO_API_USER=${HELLGO_API_USER}
             - HELLGO_API_PASSWORD=${HELLGO_API_PASSWORD}
