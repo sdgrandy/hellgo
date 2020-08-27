@@ -48,5 +48,5 @@ docker-up:
 	#docker stop bb
 	#docker rm --force bb
 
-test:
+tests:
 	$(go_test) $(go_package)/test-dir/...
