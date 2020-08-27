@@ -49,4 +49,5 @@ docker-up:
 	#docker rm --force bb
 
 tests:
-	go test test-dir/...
+	cd test-dir
+	go test
