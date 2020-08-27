@@ -9,6 +9,8 @@ export
 #docker_compose := docker-compose
 docker_compose	:= ENVIRONMENT=$(ENVIRONMENT) docker-compose
 docker_service := hellgo
+go_test 		:= go test -count=1 -v
+go_package  	:= $(shell cat go.mod | grep '^module' | sed 's/module //')
 
 print-vars:
 	@echo 'url is $(HELLGO_API_URL)'
@@ -45,3 +47,6 @@ docker-up:
 	#docker run --name bb build:2.0
 	#docker stop bb
 	#docker rm --force bb
+
+test:
+	$(go_test) $(go_package)/test-dir/...
