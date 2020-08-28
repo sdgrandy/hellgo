@@ -10,7 +10,7 @@ export
 #docker_compose := docker-compose
 docker_compose	:= ENVIRONMENT=$(ENVIRONMENT) docker-compose
 docker_service := hellgo
-#go_test 		:= go test -count=1 -v
+go_test 		:= go test -count=1 -v
 go_package  	:= $(shell cat go.mod | grep '^module' | sed 's/module //')
 
 print-vars:
@@ -53,7 +53,7 @@ test-dev:
 	echo "testing dev"
 	# cd test-dir
 	# go test -v
-	go test -v test-dir/exp/...
+	$(go_test) $(go_package)/test-dir/exp/...
 
 test-qa:
 	echo "testing qa"
