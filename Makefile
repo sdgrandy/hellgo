@@ -46,7 +46,6 @@ docker-build:
 
 docker-up:
 	$(docker_compose) up $(docker_service)
-	$(docker_compose) run --rm $(docker_service) go test -v ./exp/exp_test.go
 	#docker run --name bb build:2.0
 	#docker stop bb
 	#docker rm --force bb
