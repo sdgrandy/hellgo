@@ -50,4 +50,4 @@ docker-up:
 
 tests:
 	cd test-dir
-	@make test-dev
+	go test -v
