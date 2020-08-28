@@ -29,7 +29,7 @@ node {
         echo "port is ${API_PORT}"
         checkout([$class: 'GitSCM', branches: [[name: env.BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'test-dir']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sdgrandy/guessnumber.git']]])
         sh "ls"
-        sh "make tests"
+        sh "make test"
 
         stage 'Build'
         

@@ -3,7 +3,8 @@ HELLGO_API_URL  := $(API_URL)
 HELLGO_API_PORT  := $(API_PORT)
 HELLGO_API_USER  := $(API_USER)
 HELLGO_API_PASSWORD  := $(API_PASSWORD)
-ENVIRONMENT := $(ENVIRONMENT)
+# ENVIRONMENT := $(ENVIRONMENT)
+ENVIRONMENT := dev
 export
 
 #docker_compose := docker-compose
@@ -48,6 +49,21 @@ docker-up:
 	#docker stop bb
 	#docker rm --force bb
 
-tests:
+test-dev:
+	echo "testing dev"
 	cd test-dir
 	go test -v
+
+test-qa:
+	echo "testing qa"
+	cd test-dir
+	go test -v
+
+test-master:
+	echo "testing master"
+	cd test-dir
+	go test -v
+
+test:
+	@make test-$(ENVIRONMENT)
+
