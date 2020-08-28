@@ -27,10 +27,7 @@ node {
         echo "environment is ${ENVIRONMENT}"
         echo "url is ${API_URL}"
         echo "port is ${API_PORT}"
-        checkout([$class: 'GitSCM', branches: [[name: env.BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'test-dir']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sdgrandy/guessnumber.git']]])
-        sh "ls"
-        sh "make test"
-
+    
         stage 'Build'
         
 
@@ -61,6 +58,10 @@ node {
                 sh "make docker-build"
                 sh "make docker-up"
                 sh "rm vars.env"
+
+                 checkout([$class: 'GitSCM', branches: [[name: env.BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'guessnumber']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sdgrandy/guessnumber.git']]])
+                 sh "make test"
+                 sh "rm -rf guessnumber"
             }
         }
     }

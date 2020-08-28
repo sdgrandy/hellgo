@@ -36,6 +36,8 @@ run:
 	./hellgo
 
 docker-build:
+	cp -r ./guessnumber .
+	# go test -c ./guessnumber/exp/...
 	$(docker_compose) build --no-cache $(docker_service)
 	#docker build --no-cache --build-arg PORT=$(HELLGO_API_PORT) \
 	#--tag build:2.0 .
@@ -45,26 +47,24 @@ docker-build:
 
 docker-up:
 	$(docker_compose) up $(docker_service)
+	$(docker_compose) run --rm $(docker_service) go test -v ./exp/exp_test.go
 	#docker run --name bb build:2.0
 	#docker stop bb
 	#docker rm --force bb
 
 test-dev:
-	echo "testing dev"
-	# cd test-dir
-	# go test -v
-	$(go_test) $(go_package)/test-dir/exp/...
+	@make -C guessnumber test-dev
 
 test-qa:
-	echo "testing qa"
-	cd test-dir
-	go test -v
+	@make -C guessnumber test-qa
 
 test-master:
-	echo "testing master"
-	cd test-dir
-	go test -v
+	@make -C guessnumber test-master
 
 test:
 	@make test-$(ENVIRONMENT)
+
+.PHONY: docker-integration-test
+docker-integration-test:
+	# $(docker_compose) run --rm $(docker_service) go test -v ./exp/exp_test.go
 

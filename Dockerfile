@@ -2,6 +2,8 @@ FROM golang:latest
 ARG ENVIRONMENT
 
 RUN echo "ENVIRONMENT: ${ENVIRONMENT}"
+#RUN go test -c exp/...
+RUN ls src
 
 RUN mkdir /app
 ADD . /app/
