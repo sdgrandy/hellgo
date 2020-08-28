@@ -53,7 +53,7 @@ test-dev:
 	echo "testing dev"
 	# cd test-dir
 	# go test -v
-	go test -v testdir/...
+	go test -v test-dir/...
 
 test-qa:
 	echo "testing qa"
