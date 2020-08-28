@@ -36,7 +36,6 @@ run:
 	./hellgo
 
 docker-build:
-	cp -r ./guessnumber .
 	# go test -c ./guessnumber/exp/...
 	$(docker_compose) build --no-cache $(docker_service)
 	#docker build --no-cache --build-arg PORT=$(HELLGO_API_PORT) \
