@@ -51,8 +51,9 @@ docker-up:
 
 test-dev:
 	echo "testing dev"
-	cd test-dir
-	go test -v
+	# cd test-dir
+	# go test -v
+	go test -v testdir/...
 
 test-qa:
 	echo "testing qa"
