@@ -59,9 +59,10 @@ node {
                 sh "make docker-up"
                 sh "rm vars.env"
 
-                 checkout([$class: 'GitSCM', branches: [[name: env.BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'guessnumber']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sdgrandy/guessnumber.git']]])
-                 sh "make test"
-                 sh "rm -rf guessnumber"
+                stage 'TEST'
+                checkout([$class: 'GitSCM', branches: [[name: env.BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'guessnumber']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sdgrandy/guessnumber.git']]])
+                sh "make test"
+                sh "rm -rf guessnumber"
             }
         }
     }
