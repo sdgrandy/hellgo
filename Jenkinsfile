@@ -28,7 +28,8 @@ node {
         checkout scm
         sh 'printenv'
         echo "environment is ${ENVIRONMENT}"
-        sh "curl ${ebu}api/json | jq"
+        // sh "curl ${ebu}api/json | jq"
+        sh "echo ${ebu}"
         echo "url is ${API_URL}"
         echo "port is ${API_PORT}"
     
