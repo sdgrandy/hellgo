@@ -21,7 +21,7 @@ node {
         "ENVIRONMENT=${env.BRANCH_NAME}",
         "API_URL=${url}",
         "API_PORT=${port}",
-        "AUTHOR=${author}"
+        "AUTHOR=${author}",
         "EBU=${ebu}"
     ]) {
         stage 'Checkout'
