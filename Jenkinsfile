@@ -22,7 +22,7 @@ node {
         "API_URL=${url}",
         "API_PORT=${port}",
         "AUTHOR=${author}"
-        "EBU=%{ebu}"
+        "EBU=${ebu}"
     ]) {
         stage 'Checkout'
         checkout scm
