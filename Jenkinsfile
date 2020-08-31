@@ -14,6 +14,7 @@ node {
         url = env.API_URL_DEV
         port = env.API_PORT_DEV
     }
+    AUTHOR = env.GIT_COMMIT_AUTHOR
     withEnv([
         "PROJECT_NAME=${projectName}",
         "WORKSPACE=${pwd()}",
@@ -53,7 +54,7 @@ node {
                 // sh "echo HELLGO_API_USER=${API_USER} >> vars.env"
                 // sh "echo HELLGO_API_PASSWORD=${API_PASSWORD} >> vars.env"
                 // sh "cat vars.env"
-                sh "echo author: ${env.GIT_COMMIT_AUTHOR}"
+                sh "echo author: ${env.AUTHOR}"
                 sh "make print-vars"
                 sh "make env-vars"
                 sh "make docker-build"
