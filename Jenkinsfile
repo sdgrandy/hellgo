@@ -2,10 +2,7 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    def COMMITTER_EMAIL = bat(
-        script: "git --no-pager show -s --format='%%ae'",
-        returnStdout: true).split('\r\n')[2].trim() 
-        echo "COMMITTER_EMAIL: ${COMMITTER_EMAIL}"
+    def author = ${env.BUILD_URL}
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
@@ -24,7 +21,7 @@ node {
         "ENVIRONMENT=${env.BRANCH_NAME}",
         "API_URL=${url}",
         "API_PORT=${port}",
-        "AUTHOR=${COMMITTER_EMAIL}"
+        "AUTHOR=${author}"
     ]) {
         stage 'Checkout'
         checkout scm
