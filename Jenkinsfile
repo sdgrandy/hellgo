@@ -2,7 +2,7 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    def author = ${env.BUILD_URL}
+    def author = env.BUILD_URL
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
