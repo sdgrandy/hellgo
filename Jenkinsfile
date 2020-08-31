@@ -2,7 +2,7 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    def ebu = env.BUILD_URL
+    
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
@@ -21,15 +21,15 @@ node {
         "ENVIRONMENT=${env.BRANCH_NAME}",
         "API_URL=${url}",
         "API_PORT=${port}",
-        "AUTHOR=${author}",
-        "EBU=${ebu}"
+        "AUTHOR=${author}"
+        // "EBU=${ebu}"
     ]) {
         stage 'Checkout'
         checkout scm
         sh 'printenv'
         echo "environment is ${ENVIRONMENT}"
         // sh "curl ${ebu}api/json | jq"
-        sh "echo ${EBU}"
+        // sh "echo ${EBU}"
         echo "url is ${API_URL}"
         echo "port is ${API_PORT}"
     
