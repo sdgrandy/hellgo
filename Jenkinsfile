@@ -2,7 +2,6 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
@@ -20,16 +19,12 @@ node {
         "WORKSPACE=${pwd()}",
         "ENVIRONMENT=${env.BRANCH_NAME}",
         "API_URL=${url}",
-        "API_PORT=${port}",
-        "AUTHOR=${author}"
-        // "EBU=${ebu}"
+        "API_PORT=${port}"
     ]) {
         stage 'Checkout'
         checkout scm
         sh 'printenv'
         echo "environment is ${ENVIRONMENT}"
-        // sh "curl ${ebu}api/json | jq"
-        // sh "echo ${EBU}"
         echo "url is ${API_URL}"
         echo "port is ${API_PORT}"
     
@@ -58,8 +53,6 @@ node {
                 // sh "echo HELLGO_API_USER=${API_USER} >> vars.env"
                 // sh "echo HELLGO_API_PASSWORD=${API_PASSWORD} >> vars.env"
                 // sh "cat vars.env"
-                echo "author: ${AUTHOR}"
-                sh "echo author: author: ${AUTHOR}"
                 sh "make print-vars"
                 sh "make env-vars"
                 sh "make docker-build"
