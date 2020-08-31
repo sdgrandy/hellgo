@@ -2,7 +2,10 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    def author = $(git show --name-only)
+    def COMMITTER_EMAIL = bat(
+        script: "git --no-pager show -s --format='%%ae'",
+        returnStdout: true).split('\r\n')[2].trim() 
+        echo "COMMITTER_EMAIL: ${COMMITTER_EMAIL}"
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
@@ -21,7 +24,7 @@ node {
         "ENVIRONMENT=${env.BRANCH_NAME}",
         "API_URL=${url}",
         "API_PORT=${port}",
-        "AUTHOR=${author}"
+        "AUTHOR=${COMMITTER_EMAIL}"
     ]) {
         stage 'Checkout'
         checkout scm
@@ -56,7 +59,7 @@ node {
                 // sh "echo HELLGO_API_PASSWORD=${API_PASSWORD} >> vars.env"
                 // sh "cat vars.env"
                 echo "author: ${AUTHOR}"
-                sh "echo author: ${AUTHOR}"
+                sh "echo author: author: ${AUTHOR}"
                 sh "make print-vars"
                 sh "make env-vars"
                 sh "make docker-build"
