@@ -29,7 +29,7 @@ node {
         sh 'printenv'
         echo "environment is ${ENVIRONMENT}"
         // sh "curl ${ebu}api/json | jq"
-        sh "echo ${ebu}"
+        sh "echo ${EBU}"
         echo "url is ${API_URL}"
         echo "port is ${API_PORT}"
     
