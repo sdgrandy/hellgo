@@ -5,11 +5,11 @@ node {
     def author = sh(
         script: 'git log -1 --pretty=\'%an\'',
         returnStdout: true
-    )
+    ).trim()
     def commit = sh(
         script: 'git log -1 --pretty=\'%B\'',
         returnStdout: true
-    )
+    ).trim()
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
