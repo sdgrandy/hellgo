@@ -2,6 +2,8 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
+    def name = git log -n 1 --pretty=format:'%an'
+    def author = sh(git log -1 --pretty=%an)
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
@@ -21,6 +23,7 @@ node {
         "ENVIRONMENT=${env.BRANCH_NAME}",
         "API_URL=${url}",
         "API_PORT=${port}"
+        "AUTHOR=${author}"
     ]) {
         stage 'Checkout'
         checkout scm
@@ -59,8 +62,9 @@ node {
                 sh "make docker-build"
                 sh "make docker-up"
                 sh "rm vars.env"
-                sh "git log -n 1 --pretty=format:'%ae' "
-
+                sh "author: ${AUTHOR}"
+                // sh "git log -n 1 --pretty=format:'%ae' "
+                
                 stage 'TEST'
                 // checkout([$class: 'GitSCM', branches: [[name: env.BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'guessnumber']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sdgrandy/guessnumber.git']]])
                 // sh "make test"
