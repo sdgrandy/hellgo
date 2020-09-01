@@ -81,8 +81,8 @@ node  {
                     sh "make docker-build"
                     sh "make docker-up"
                     sh "rm vars.env"
-                    sh "echo author: ${AUTHOR}"
-                    sh "echo message: ${MESSAGE}"
+                    // sh "echo author: ${AUTHOR}"
+                    // sh "echo message: ${MESSAGE}"
                     // sh "git log -n 1 --pretty=format:'%ae' "
                     
                     stage 'TEST'
@@ -99,6 +99,7 @@ node  {
         echo "there was an error"
         echo "message: ${message}"
         echo "author: ${author}"
+        throw e
     }finally{
         getLastCommitMessage()
         getGitAuthor()
