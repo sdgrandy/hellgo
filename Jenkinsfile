@@ -2,22 +2,24 @@ node  {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    def author = sh(
-        script: 'git log -1 --pretty=\'%an\'',
-        returnStdout: true
-    ).trim()
-    def commit = sh(
-        script: 'git log -1 --pretty=\'%B\'',
-        returnStdout: true
-    ).trim()
-    // def getGitAuthor = {
-    //     def commit = sh(returnStdout: true, script: 'git rev-parse HEAD')
-    //     author = sh(returnStdout: true, script: "git --no-pager show -s --format='%an' ${commit}").trim()
-    // }
+    def author = "default"
+    def message = "default"
+    // def author = sh(
+    //     script: 'git log -1 --pretty=\'%an\'',
+    //     returnStdout: true
+    // ).trim()
+    // def commit = sh(
+    //     script: 'git log -1 --pretty=\'%B\'',
+    //     returnStdout: true
+    // ).trim()
+    def getGitAuthor = {
+        def commit = sh(returnStdout: true, script: 'git rev-parse HEAD')
+        author = sh(returnStdout: true, script: "git --no-pager show -s --format='%an' ${commit}").trim()
+    }
 
-    // def getLastCommitMessage = {
-    //     message = sh(returnStdout: true, script: 'git log -1 --pretty=%B').trim()
-    // }
+    def getLastCommitMessage = {
+        message = sh(returnStdout: true, script: 'git log -1 --pretty=%B').trim()
+    }
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
@@ -30,6 +32,8 @@ node  {
         url = env.API_URL_DEV
         port = env.API_PORT_DEV
     }
+    getLastCommitMessage()
+    getGitAuthor()
     withEnv([
         "PROJECT_NAME=${projectName}",
         "WORKSPACE=${pwd()}",
@@ -37,7 +41,7 @@ node  {
         "API_URL=${url}",
         "API_PORT=${port}",
         "AUTHOR=${author}",
-        "COMMIT=${commit}"
+        "MESSAGE"=${message}"
     ]) {
         stage 'Checkout'
         checkout scm
@@ -77,7 +81,7 @@ node  {
                 sh "make docker-up"
                 sh "rm vars.env"
                 sh "echo author: ${AUTHOR}"
-                sh "echo message: ${commit}"
+                sh "echo message: ${MESSAGE}"
                 // sh "git log -n 1 --pretty=format:'%ae' "
                 
                 stage 'TEST'
