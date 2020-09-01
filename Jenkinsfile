@@ -32,7 +32,8 @@ node {
         url = env.API_URL_DEV
         port = env.API_PORT_DEV
     }
-    
+    getLastCommitMessage()
+    getGitAuthor()
     withEnv([
         "PROJECT_NAME=${projectName}",
         "WORKSPACE=${pwd()}",
