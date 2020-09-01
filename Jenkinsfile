@@ -6,6 +6,10 @@ node {
         script: 'git log -1 --pretty=\'%an\'',
         returnStdout: true
     )
+    def commit = sh(
+        script: 'git log -1 --pretty=\'%B\'',
+        returnStdout: true
+    )
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
@@ -25,7 +29,8 @@ node {
         "ENVIRONMENT=${env.BRANCH_NAME}",
         "API_URL=${url}",
         "API_PORT=${port}",
-        "AUTHOR=${author}"
+        "AUTHOR=${author}",
+        "COMMIT=${commit}"
     ]) {
         stage 'Checkout'
         checkout scm
@@ -65,6 +70,7 @@ node {
                 sh "make docker-up"
                 sh "rm vars.env"
                 sh "echo author: ${AUTHOR}"
+                sh "echo message: ${commit}"
                 // sh "git log -n 1 --pretty=format:'%ae' "
                 
                 stage 'TEST'
