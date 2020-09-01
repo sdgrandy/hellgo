@@ -14,6 +14,19 @@ node {
         url = env.API_URL_DEV
         port = env.API_PORT_DEV
     }
+    def author = ""
+    def changeSet = currentBuild.rawBuild.changeSets               
+    for (int i = 0; i < changeSet.size(); i++) 
+    {
+    def entries = changeSet[i].items;
+    for (int i = 0; i < changeSet.size(); i++) 
+                {
+                        def entries = changeSet[i].items;
+                        def entry = entries[0]
+                        author += "${entry.author}"
+                } 
+    }
+    print author;
     withEnv([
         "PROJECT_NAME=${projectName}",
         "WORKSPACE=${pwd()}",
@@ -58,11 +71,6 @@ node {
                 sh "make docker-build"
                 sh "make docker-up"
                 sh "rm vars.env"
-                echo "${GIT_BRANCH}"
-
-                echo "${GIT_URL}"
-
-                echo "${GIT_COMMIT}"
 
                 stage 'TEST'
                 // checkout([$class: 'GitSCM', branches: [[name: env.BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'guessnumber']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sdgrandy/guessnumber.git']]])
