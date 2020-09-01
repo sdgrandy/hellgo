@@ -14,19 +14,12 @@ node {
         url = env.API_URL_DEV
         port = env.API_PORT_DEV
     }
-    def author = ""
-    def changeSet = currentBuild.rawBuild.changeSets               
-    for (int i = 0; i < changeSet.size(); i++) 
-    {
-        def entries = changeSet[i].items;
-        for (int j = 0; j < changeSet.size(); j++) 
-        {
-                def entries = changeSet[i].items;
-                def entry = entries[0]
-                author += "${entry.author}"
-        } 
-    }
-    print author;
+    AUTHOR_NAME = bat (
+      script: "git show -s --format='%%an' HEAD",
+      returnStdout: true
+    ).split('\r\n')[2].trim()
+
+    echo "The last commit was written by ${AUTHOR_NAME}."
     withEnv([
         "PROJECT_NAME=${projectName}",
         "WORKSPACE=${pwd()}",
