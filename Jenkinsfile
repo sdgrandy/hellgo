@@ -32,6 +32,8 @@ node  {
         url = env.API_URL_DEV
         port = env.API_PORT_DEV
     }
+    getLastCommitMessage()
+    getGitAuthor()
     withEnv([
         "PROJECT_NAME=${projectName}",
         "WORKSPACE=${pwd()}",
@@ -49,8 +51,6 @@ node  {
         echo "port is ${API_PORT}"
 
         stage 'Build'
-        getLastCommitMessage()
-        getGitAuthor()
         
 
         if( ['master', 'qa', 'dev'].contains("${ENVIRONMENT}".toString()) ) {
