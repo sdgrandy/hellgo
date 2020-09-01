@@ -2,7 +2,10 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    def author = sh "git log -1 --pretty=%an"
+    def author = sh(
+        script: 'git log -1 --pretty=\'%an\'',
+        returnStdout: true
+    )
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
@@ -21,7 +24,7 @@ node {
         "WORKSPACE=${pwd()}",
         "ENVIRONMENT=${env.BRANCH_NAME}",
         "API_URL=${url}",
-        "API_PORT=${port}"
+        "API_PORT=${port}",
         "AUTHOR=${author}"
     ]) {
         stage 'Checkout'
@@ -61,7 +64,7 @@ node {
                 sh "make docker-build"
                 sh "make docker-up"
                 sh "rm vars.env"
-                sh "author: ${AUTHOR}"
+                sh "echo author: ${AUTHOR}"
                 // sh "git log -n 1 --pretty=format:'%ae' "
                 
                 stage 'TEST'
