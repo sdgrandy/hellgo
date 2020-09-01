@@ -2,7 +2,7 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    def author = sh(git log -1 --pretty=%an)
+    def author = sh "git log -1 --pretty=%an"
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
