@@ -41,7 +41,7 @@ node  {
         "API_URL=${url}",
         "API_PORT=${port}",
         "AUTHOR=${author}",
-        "MESSAGE"=${message}"
+        "MESSAGE=${message}"
     ]) {
         stage 'Checkout'
         checkout scm
