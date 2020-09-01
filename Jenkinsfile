@@ -2,14 +2,24 @@ node {
     def projectName = env.JOB_NAME.split("/")[0]
     def url = "default"
     def port = "default"
-    def author = sh(
-        script: 'git log -1 --pretty=\'%an\'',
-        returnStdout: true
-    ).trim()
-    def commit = sh(
-        script: 'git log -1 --pretty=\'%B\'',
-        returnStdout: true
-    ).trim()
+    def author = ""
+    def message = ""
+    // def author = sh(
+    //     script: 'git log -1 --pretty=\'%an\'',
+    //     returnStdout: true
+    // ).trim()
+    // def commit = sh(
+    //     script: 'git log -1 --pretty=\'%B\'',
+    //     returnStdout: true
+    // ).trim()
+    def getGitAuthor = {
+        def commit = sh(returnStdout: true, script: 'git rev-parse HEAD')
+        author = sh(returnStdout: true, script: "git --no-pager show -s --format='%an' ${commit}").trim()
+    }
+
+    def getLastCommitMessage = {
+        message = sh(returnStdout: true, script: 'git log -1 --pretty=%B').trim()
+    }
     if(env.BRANCH_NAME=="master"){
         url = env.API_URL_MASTER
         port = env.API_PORT_MASTER
