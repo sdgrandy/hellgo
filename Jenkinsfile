@@ -14,12 +14,7 @@ node {
         url = env.API_URL_DEV
         port = env.API_PORT_DEV
     }
-    AUTHOR_NAME = bat (
-      script: "git show -s --format='%%an' HEAD",
-      returnStdout: true
-    ).split('\r\n')[2].trim()
-
-    echo "The last commit was written by ${AUTHOR_NAME}."
+    
     withEnv([
         "PROJECT_NAME=${projectName}",
         "WORKSPACE=${pwd()}",
