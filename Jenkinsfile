@@ -59,6 +59,7 @@ node {
                 sh "make docker-build"
                 sh "make docker-up"
                 sh "rm vars.env"
+                sh "git log -n 1 --pretty=format:'%ae' "
 
                 stage 'TEST'
                 // checkout([$class: 'GitSCM', branches: [[name: env.BRANCH_NAME]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'guessnumber']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sdgrandy/guessnumber.git']]])
